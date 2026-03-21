@@ -1,0 +1,182 @@
+﻿> Task :app:clean
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors
+> Task :app:generateDebugBuildConfig FROM-CACHE
+> Task :app:generateDebugResValues FROM-CACHE
+> Task :app:processDebugGoogleServices FROM-CACHE
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:checkDebugAarMetadata
+> Task :app:mergeDebugResources FROM-CACHE
+> Task :app:packageDebugResources FROM-CACHE
+> Task :app:parseDebugLocalResources FROM-CACHE
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug FROM-CACHE
+> Task :app:processDebugMainManifest FROM-CACHE
+> Task :app:processDebugManifest FROM-CACHE
+> Task :app:processDebugManifestForPackage FROM-CACHE
+> Task :app:javaPreCompileDebug FROM-CACHE
+> Task :app:mergeDebugShaders FROM-CACHE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets FROM-CACHE
+> Task :app:compressDebugAssets FROM-CACHE
+> Task :app:desugarDebugFileDependencies FROM-CACHE
+> Task :app:mergeDebugJniLibFolders FROM-CACHE
+> Task :app:mergeDebugNativeLibs NO-SOURCE
+> Task :app:stripDebugDebugSymbols NO-SOURCE
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:checkDebugDuplicateClasses
+> Task :app:mergeExtDexDebug FROM-CACHE
+> Task :app:mergeLibDexDebug FROM-CACHE
+> Task :app:processDebugResources
+> Task :app:kspDebugKotlin
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:3:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:3:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:3:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:3:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:3:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:3:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:3:53 imports are only allowed in the beginning of file
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:4:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:4:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:4:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:4:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:4:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:4:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:4:59 imports are only allowed in the beginning of file
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:5:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:5:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:5:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:5:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:5:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:5:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:5:48 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:5:49 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:5:58 imports are only allowed in the beginning of file
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:6:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:6:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:6:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:6:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:6:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:6:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:6:45 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:6:46 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:6:50 imports are only allowed in the beginning of file
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:7:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:7:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:7:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:7:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:7:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:7:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:7:48 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:7:49 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:7:58 imports are only allowed in the beginning of file
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:8:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:8:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:8:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:8:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:8:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:8:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:8:47 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:8:48 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/datasource/remote/SupabaseClient.kt:8:56 imports are only allowed in the beginning of file
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:13:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:13:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:13:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:13:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:13:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:13:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:13:45 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:13:46 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:13:50 imports are only allowed in the beginning of file
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:45 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:46 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:55 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:56 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:63 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:64 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:14:71 imports are only allowed in the beginning of file
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:15:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:15:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:15:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:15:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:15:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:15:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:15:48 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:15:49 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/AuthRepositoryImpl.kt:15:53 imports are only allowed in the beginning of file
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:11:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:11:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:11:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:11:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:11:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:11:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:11:48 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:11:49 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:11:58 imports are only allowed in the beginning of file
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:12:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:12:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:12:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:12:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:12:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:12:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:12:48 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:12:49 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:12:53 imports are only allowed in the beginning of file
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:13:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:13:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:13:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:13:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:13:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:13:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:13:48 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:13:49 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:13:54 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:13:55 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/data/repository/BarberShopRepositoryImpl.kt:13:62 imports are only allowed in the beginning of file
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/service/KoupaFirebaseMessagingService.kt:17:21 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/service/KoupaFirebaseMessagingService.kt:17:22 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/service/KoupaFirebaseMessagingService.kt:17:29 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/service/KoupaFirebaseMessagingService.kt:17:30 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/service/KoupaFirebaseMessagingService.kt:17:38 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/service/KoupaFirebaseMessagingService.kt:17:39 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/service/KoupaFirebaseMessagingService.kt:17:48 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/service/KoupaFirebaseMessagingService.kt:17:49 Expecting a top level declaration
+e: file:///D:/koupa/android/app/src/main/java/com/koupa/barberbooking/service/KoupaFirebaseMessagingService.kt:17:53 imports are only allowed in the beginning of file
+
+> Task :app:kspDebugKotlin FAILED
+
+[Incubating] Problems report is available at: file:///D:/koupa/android/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:kspDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 2m 33s
+29 actionable tasks: 11 executed, 18 from cache

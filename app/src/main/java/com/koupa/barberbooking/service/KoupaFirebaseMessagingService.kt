@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.koupa.barberbooking.MainActivity
 import com.koupa.barberbooking.R
 import com.koupa.barberbooking.data.datasource.remote.SupabaseClientFactory
-import io.github.jan-tennert.supabase.postgrest.from
+import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

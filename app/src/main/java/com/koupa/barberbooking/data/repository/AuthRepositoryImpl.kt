@@ -10,9 +10,9 @@ import com.koupa.barberbooking.domain.model.UserRole
 import com.koupa.barberbooking.domain.repository.AuthRepository
 import com.koupa.barberbooking.domain.repository.AuthState
 import com.koupa.barberbooking.utils.FirebaseErrorMapper
-import io.github.jan-tennert.supabase.gotrue.auth
-import io.github.jan-tennert.supabase.gotrue.providers.builtin.IDToken
-import io.github.jan-tennert.supabase.postgrest.from
+import io.github.jan.supabase.gotrue.auth
+import io.github.jan.supabase.gotrue.providers.builtin.IDToken
+import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
