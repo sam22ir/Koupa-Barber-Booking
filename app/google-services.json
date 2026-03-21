@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "815140856242",
+    "project_id": "koupa-dz",
+    "storage_bucket": "koupa-dz.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815140856242:android:fc0d759c73d6d4ce3ac4ab",
+        "android_client_info": {
+          "package_name": "com.koupa.barberbooking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQWBCllLAxQATr3cLw0iY-n0oQEwI3KRs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
