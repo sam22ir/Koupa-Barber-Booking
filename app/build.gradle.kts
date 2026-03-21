@@ -29,13 +29,24 @@ android {
         buildConfigField("String", "SUPABASE_ANON_KEY", "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFmbmFsaGR6ZXFxaHltZmtnZG5kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwNDQ3OTcsImV4cCI6MjA4OTYyMDc5N30.8RQMdf5G4gV0ZM0SlquhcDcJjKcDv6AV201XCJiJN8E\"")
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("koupa-release.jks")
+            storePassword = "koupa@2025"
+            keyAlias = "koupa"
+            keyPassword = "koupa@2025"
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 

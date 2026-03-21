@@ -1,147 +1,120 @@
 <div align="center">
 
-# 💈 Koupa (كوبا)
-### Premium Barber Booking in Algeria
+<img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="120" height="120" alt="Koupa Logo"/>
 
-![Android](https://img.shields.io/badge/Android-Only-green?logo=android&logoColor=white)
-![Kotlin](https://img.shields.io/badge/Kotlin-1.9.23-purple?logo=kotlin&logoColor=white)
-![Compose](https://img.shields.io/badge/Jetpack-Compose-blue?logo=jetpackcompose&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-Auth+FCM-orange?logo=firebase&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-green?logo=supabase&logoColor=white)
+# كوبا | Koupa
 
-**Book your favorite barber with a tap — cash on arrival in Algerian Dinars (DZD)**
+### منصة حجز صالونات الحلاقة الجزائرية
 
-📱 Android Exclusive • 🇩🇿 Algeria Market • 💵 Cash Only (DZD) • 🌐 Arabic + English
+[![Release](https://img.shields.io/github/v/release/sam22ir/Koupa-Barber-Booking?color=0d9488&label=إصدار&style=for-the-badge)](https://github.com/sam22ir/Koupa-Barber-Booking/releases)
+[![License](https://img.shields.io/badge/رخصة-MIT-gold?style=for-the-badge)](LICENSE)
+[![Platform](https://img.shields.io/badge/منصة-Android%206.0%2B-3DDC84?style=for-the-badge&logo=android)](https://developer.android.com)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.0-7F52FF?style=for-the-badge&logo=kotlin)](https://kotlinlang.org)
 
----
+**[⬇️ تحميل التطبيق](https://github.com/sam22ir/Koupa-Barber-Booking/releases/latest)** | **[🐛 الإبلاغ عن مشكلة](https://github.com/sam22ir/Koupa-Barber-Booking/issues)**
 
-## ✨ Features
-
-| Feature | Description |
-|---------|-------------|
-| 📞 **Phone Auth** | Secure OTP verification via Firebase |
-| 🔍 **Smart Search** | Find nearby barbershops using GPS |
-| 📅 **Easy Booking** | Book appointments in 3 simple steps |
-| 🔔 **Push Notifications** | Real-time booking updates via FCM |
-| 🌍 **Bilingual** | Arabic (RTL) + English support |
-| 🏪 **Dual Role** | Customer & Barber interfaces |
-| 📍 **58 Wilayas** | Coverage across all Algerian provinces |
-| 💵 **Cash Payment** | Pay at the shop — no online payment |
+</div>
 
 ---
 
-## 🛠️ Tech Stack
+## 📸 لقطات الشاشة
 
-### Backend
-- **Supabase** — PostgreSQL 15 database with Row Level Security
-- **Edge Functions** — Serverless functions for bookings
-- **PostGIS** — Geospatial queries for nearby search
-
-### Authentication & Notifications
-- **Firebase Auth** — Phone OTP verification
-- **FCM** — Push notifications for bookings
-
-### Android
-- **Kotlin** — Modern Android development language
-- **Jetpack Compose** — Declarative UI toolkit
-- **MVVM + Clean Architecture** — Scalable code structure
-- **Hilt** — Dependency injection
-- **Coroutines + Flow** — Async programming
-
-### Design
-- **Google Stitch MCP** — AI-generated UI screens
-- **Cairo + Montserrat** — Arabic/Latin typography
-- **Material Design 3** — Modern Android design
+> قريباً...
 
 ---
 
-## 🏗️ Architecture
+## ✨ المميزات
+
+| للزبون 👤 | للحلاق ✂️ |
+|-----------|-----------|
+| البحث عن صالونات قريبة | لوحة تحكم احترافية |
+| حجز موعد بنقرة واحدة | إدارة جدول المواعيد |
+| عرض أوقات متاحة | استقبال إشعارات فورية |
+| تتبع حالة الحجز | إحصائيات يومية |
+| إلغاء الحجز بسهولة | التحكم في الأوقات المتاحة |
+
+---
+
+## 🏗️ المعمارية والتقنيات
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    Presentation Layer                    │
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌───────────┐ │
-│  │ Auth VM │  │Customer │  │ Barber  │  │Navigation │ │
-│  │         │  │  Home   │  │Dashboard│  │   Graph   │ │
-│  └─────────┘  └─────────┘  └─────────┘  └───────────┘ │
-├─────────────────────────────────────────────────────────┤
-│                      Domain Layer                       │
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐                │
-│  │  Models │  │Use Cases│  │Interface│                │
-│  │         │  │         │  │Repos    │                │
-│  └─────────┘  └─────────┘  └─────────┘                │
-├─────────────────────────────────────────────────────────┤
-│                       Data Layer                        │
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐  │
-│  │Firebase │  │Supabase │  │  Mappers│  │  Repos  │  │
-│  │  Auth   │  │   API   │  │         │  │   Impl  │  │
-│  └─────────┘  └─────────┘  └─────────┘  └─────────┘  │
-└─────────────────────────────────────────────────────────┘
+Koupa
+├── 🎨 UI Layer        → Jetpack Compose (Material 3) + Hilt Navigation
+├── 🧠 Domain Layer    → Use Cases + Repositories (Clean Architecture)
+├── 💾 Data Layer      → Supabase (PostgreSQL) + Firebase Auth
+└── 🔔 Services        → Firebase Cloud Messaging (FCM)
 ```
 
----
+### المكتبات الرئيسية
 
-## 📊 Database Schema
-
-| Table | Description |
-|-------|-------------|
-| `users` | Customers & barbers with phone auth |
-| `barbershops` | Shop details with GPS coordinates |
-| `appointments` | Bookings with status tracking |
-| `availability_slots` | Barber's weekly time grid |
-
-### Edge Functions
-- `get-nearby-shops` — GPS-based barbershop search
-- `create-appointment` — Atomic slot booking
-- `cancel-appointment` — Booking cancellation
+| الفئة | المكتبة |
+|-------|---------|
+| **UI** | Jetpack Compose · Material 3 · Coil |
+| **Backend** | Supabase (Postgrest · Realtime · Auth) |
+| **Auth** | Firebase Phone Authentication |
+| **DI** | Hilt (KSP) |
+| **Networking** | Ktor Android |
+| **Navigation** | Navigation Compose |
+| **Async** | Kotlin Coroutines · Flow |
 
 ---
 
-## 🚀 Getting Started
+## 🚀 كيفية البناء محلياً
 
-### Prerequisites
-- Android Studio Hedgehog (2023.1.1+)
-- JDK 17+
+### المتطلبات
+- Android Studio Hedgehog أو أحدث
+- JDK 17
 - Android SDK 34
-- Firebase project with Phone Auth enabled
 
-### Setup
-1. Clone the repository
+### الخطوات
+
 ```bash
+# 1. استنساخ المستودع
 git clone https://github.com/sam22ir/Koupa-Barber-Booking.git
-```
+cd Koupa-Barber-Booking
 
-2. Open in Android Studio
+# 2. إضافة google-services.json في app/
+# (احصل عليه من Firebase Console)
 
-3. Configure Firebase
-   - Add your `google-services.json` to `app/` directory
-
-4. Build and Run
-```bash
+# 3. البناء
 ./gradlew assembleDebug
-```
 
-5. Install APK
-```bash
-adb install app/build/outputs/apk/debug/app-debug.apk
+# 4. التثبيت على الجهاز
+./gradlew installDebug
 ```
 
 ---
 
-## 📄 License
+## 🗄️ إعداد Supabase
 
-This project is licensed under the MIT License.
+التطبيق يستخدم [Supabase](https://supabase.com) للقاعدة البيانات. الجداول الرئيسية:
+
+| الجدول | الوصف |
+|--------|-------|
+| `users` | معلومات المستخدمين (زبائن وحلاقين) |
+| `barbershops` | بيانات الصالونات |
+| `availability_slots` | جدول المواعيد المتاحة |
+| `appointments` | الحجوزات المنجزة |
 
 ---
 
-## 👨‍💻 Team
+## 🔧 الإعداد المطلوب
 
-Built with ❤️ for Algeria 🇩🇿
+بعد التثبيت، يجب:
+1. **Firebase Console** → تفعيل Phone Authentication
+2. **Firebase Console** → إضافة بصمة SHA-1 للتطبيق
+3. **Supabase** → إنشاء الجداول وتفعيل Row Level Security (RLS)
+
+---
+
+## 📄 الرخصة
+
+هذا المشروع مرخص تحت [رخصة MIT](LICENSE).
 
 ---
 
 <div align="center">
 
-**© 2026 Koupa — Premium Barber Booking**
+صُنع بـ ❤️ في **الجزائر** | Made with ❤️ in **Algeria** 🇩🇿
 
 </div>
