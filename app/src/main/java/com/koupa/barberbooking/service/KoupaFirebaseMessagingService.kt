@@ -14,9 +14,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.koupa.barberbooking.MainActivity
 import com.koupa.barberbooking.R
 import com.koupa.barberbooking.data.datasource.remote.SupabaseClientFactory
-import io.github.jan.supabase.postgrest.from
+import io.github.jan-tennert.supabase.postgrest.from
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
@@ -40,6 +41,7 @@ class KoupaFirebaseMessagingService : FirebaseMessagingService() {
     lateinit var auth: FirebaseAuth
 
     private val supabase = SupabaseClientFactory.client
+    private val serviceScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
 
     /**
      * Called when FCM token is refreshed.
@@ -49,7 +51,7 @@ class KoupaFirebaseMessagingService : FirebaseMessagingService() {
         super.onNewToken(token)
         Log.d(TAG, "FCM token refreshed: $token")
 
-        CoroutineScope(Dispatchers.IO).launch {
+        serviceScope.launch {
             try {
                 val userId = auth.currentUser?.uid
                 if (userId != null) {

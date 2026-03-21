@@ -8,9 +8,9 @@ import com.koupa.barberbooking.domain.model.AppointmentStatus
 import com.koupa.barberbooking.domain.model.AvailabilitySlot
 import com.koupa.barberbooking.domain.model.BarberShop
 import com.koupa.barberbooking.domain.repository.BarberShopRepository
-import io.github.jan.supabase.functions.functions
-import io.github.jan.supabase.postgrest.from
-import io.github.jan.supabase.postgrest.query.Columns
+import io.github.jan-tennert.supabase.functions.functions
+import io.github.jan-tennert.supabase.postgrest.from
+import io.github.jan-tennert.supabase.postgrest.query.Columns
 import io.ktor.client.statement.*
 import kotlinx.serialization.json.*
 import kotlinx.serialization.json.Json
