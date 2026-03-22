@@ -3,13 +3,17 @@ package com.koupa.barberbooking.presentation.splash
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -19,11 +23,22 @@ import com.koupa.barberbooking.ui.theme.KoupaTeal
 import kotlinx.coroutines.delay
 
 /**
- * Animated splash screen — scale+fade in, auto-navigate after 2.4s.
- * Fully respects dark / light theme via MaterialTheme.colorScheme.
+ * Animated splash screen with crash diagnostics.
+ * Shows the last crash info (if any) before navigating.
  */
 @Composable
 fun SplashScreen(onSplashFinished: () -> Unit) {
+
+    val context = LocalContext.current
+
+    // Read last crash from SharedPreferences (clear immediately after reading)
+    var crashInfo by remember {
+        val prefs = context.getSharedPreferences("koupa_crash", android.content.Context.MODE_PRIVATE)
+        val crash = prefs.getString("last_crash", null)
+        if (crash != null) prefs.edit().remove("last_crash").apply()
+        mutableStateOf(crash)
+    }
+    var showCrashDialog by remember { mutableStateOf(crashInfo != null) }
 
     var triggerAnim by remember { mutableStateOf(false) }
 
@@ -33,6 +48,23 @@ fun SplashScreen(onSplashFinished: () -> Unit) {
         onSplashFinished()
     }
 
+    // Show crash info dialog so developer can see what failed
+    if (showCrashDialog && crashInfo != null) {
+        AlertDialog(
+            onDismissRequest = { showCrashDialog = false },
+            title = { Text("خطأ سابق — أرسله للمطوّر", style = MaterialTheme.typography.titleSmall) },
+            text = {
+                Text(
+                    text = crashInfo ?: "",
+                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 9.sp),
+                    fontFamily = FontFamily.Monospace
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = { showCrashDialog = false }) { Text("حسناً") }
+            }
+        )
+    }
 
     // Animated values driven by triggerAnim state
     val animLogoAlpha by animateFloatAsState(
@@ -69,7 +101,6 @@ fun SplashScreen(onSplashFinished: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // Arabic logo — scale + fade
             Text(
                 text = "كوبا",
                 style = MaterialTheme.typography.displaySmall.copy(
@@ -84,7 +115,6 @@ fun SplashScreen(onSplashFinished: () -> Unit) {
                     .alpha(animLogoAlpha)
             )
 
-            // Gold divider line — grows from centre
             Box(
                 modifier = Modifier
                     .width(48.dp * animDividerWidth)
@@ -95,7 +125,6 @@ fun SplashScreen(onSplashFinished: () -> Unit) {
 
             Spacer(modifier = Modifier.height(4.dp))
 
-            // Latin logo
             Text(
                 text = "KOUPA",
                 style = MaterialTheme.typography.titleLarge.copy(
@@ -111,7 +140,6 @@ fun SplashScreen(onSplashFinished: () -> Unit) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Tagline — delayed fade-in
             Text(
                 text = "THE DIGITAL ATELIER",
                 style = MaterialTheme.typography.labelMedium.copy(
