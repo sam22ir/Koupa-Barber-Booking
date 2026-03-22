@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme -->
+    <style name="Theme.Koupa" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/koupa_teal</item>
+        <item name="colorPrimaryDark">@color/koupa_teal</item>
+        <item name="colorAccent">@color/koupa_gold</item>
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/koupa_teal</item>
+        <!-- Background color -->
+        <item name="android:colorBackground">@color/koupa_background</item>
+    </style>
+</resources>

@@ -1,0 +1,3 @@
+supabase key ; sbp_5802986d90bc500f516616bfbaa7a44c8751eb40
+
+stitch api key ; AQ.Ab8RN6Jp8UFVoh71b2zTXn-kmQ9-Cfp7iV2BJXRFxSMJJrPHBA

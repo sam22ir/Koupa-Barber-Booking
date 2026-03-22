@@ -1,0 +1,57 @@
+# Android / Kotlin
+*.class
+*.log
+*.apk
+*.ap_
+*.aab
+*.dex
+gen/
+bin/
+out/
+
+# Android Studio / Gradle
+.idea/
+*.iml
+*.iws
+*.ipr
+.gradle/
+local.properties
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.jks
+*.keystore
+!koupa-release.jks
+
+# Firebase sensitive files
+google-services.json
+koupa-dz-firebase-adminsdk-*.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Kotlin
+*.kotlin_module
+
+# Dependency lock files can be committed but IDE files should not
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches
+.idea/modules.xml
+.idea/*.xml
+*.hprof
+
+# Generated Hilt files
+**/generated/
+**/generated/**
+
+# Test
+**/test-results/
+**/reports/

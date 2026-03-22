@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Koupa Design Tokens -->
+    <color name="koupa_teal">#1A7A78</color>
+    <color name="koupa_gold">#E1A553</color>
+    <color name="koupa_dark_slate">#323E4B</color>
+    <color name="koupa_background">#F3F5F7</color>
+    <color name="koupa_success">#2E7D32</color>
+    <color name="koupa_error">#C62828</color>
+
+    <!-- Material Theme -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

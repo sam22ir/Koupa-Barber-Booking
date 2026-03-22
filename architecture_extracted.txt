@@ -1,0 +1,92 @@
+Koupa  |  كوبا
+Barber Shop Booking Application
+Antigravity IDE — MCP Architecture & Configuration Specification
+Android Exclusive  •  Algeria Market  •  MVP v0.1.0
+
+1.  Project Overview
+
+
+
+2.  MCP Server Architecture
+Koupa uses three dedicated MCP servers within Antigravity, each with a strictly defined responsibility. No server may perform the role of another.
+
+
+
+3.  Design System  —  google-stitch-mcp
+All UI generation is handled exclusively by the Google Stitch MCP server. The following design tokens are injected into every Stitch prompt.
+
+3.1  Color Tokens
+
+3.2  Typography
+
+
+4.  Screens & User Flows
+
+4.1  Shared / Auth Screens
+
+4.2  Customer Flow
+
+4.3  Barber Flow
+
+
+5.  Database Schema  —  supabase-mcp
+PostgreSQL 15 database hosted on Supabase (eu-west-1 region). Row Level Security is MANDATORY on all tables.
+
+5.1  Table: users
+
+5.2  Table: barbershops
+
+5.3  Table: appointments
+
+5.4  Table: availability_slots
+
+5.5  Edge Functions
+
+
+6.  Auth & Notifications  —  firebase-mcp
+
+6.1  Phone Authentication Flow
+
+6.2  FCM Notification Types
+
+
+7.  Android Project Configuration
+
+
+
+8.  Antigravity Agent Rules
+The following rules are stored in .agent/rules/koupa-rules.md and are enforced by the Antigravity agent on every task:
+
+ALWAYS use google-stitch-mcp for any UI screen generation, layout, or design token decisions. Never design UI manually.
+ALWAYS use supabase-mcp for any database queries, schema changes, RLS policies, or edge function generation.
+ALWAYS use firebase-mcp for any authentication flow or push notification implementation.
+All user-facing strings MUST have Arabic (ar) and English (en) translations. Arabic is the PRIMARY default language — locale ar-DZ. English is secondary.
+All monetary values must be in Algerian Dinar (DZD). Never use USD or EUR symbols.
+Phone numbers must be validated against Algerian format: +213 followed by 9 digits.
+The app is Android-ONLY. Do not generate any iOS, web, or Flutter code.
+Payment method is cash-on-arrival ONLY for MVP. Never implement online payment.
+Never expose SUPABASE_SERVICE_KEY in client-side Android code. Use only the anon key.
+All Supabase tables must have Row Level Security (RLS) enabled before any data access code is written.
+
+
+9.  Setup Checklist
+
+9.1  Pre-requisites
+Install Google Antigravity IDE from antigravity.google/download
+Create Google Cloud Platform project and enable Stitch API: gcloud beta services mcp enable stitch.googleapis.com
+Create Supabase project (eu-west-1 region) and note the Project URL and Service Role Key
+Create Firebase project (koupa-dz) and enable Phone Authentication + FCM
+Add Android app in Firebase console and download google-services.json
+
+9.2  Antigravity MCP Configuration
+Open Antigravity → Agent Panel → ... → MCP Servers → Manage MCP Servers → View raw config
+Replace content of mcp_config.json with the provided koupa_mcp_config.json content
+Fill in YOUR_GCP_PROJECT_ID, YOUR_STITCH_API_KEY, YOUR_SUPABASE_URL, YOUR_SUPABASE_SERVICE_KEY, YOUR_FIREBASE_PROJECT_ID
+Click Refresh in Manage MCP Servers — verify all 3 servers appear (stitch, supabase, firebase)
+
+9.3  Skills Installation
+In Antigravity chat, run: npx skills add google-labs-code/stitch-skills --skill enhance-prompt --global
+In Antigravity chat, run: npx skills add google-labs-code/stitch-skills --skill react:components --global
+
+
+Document Classification: CONFIDENTIAL  •  Project: Koupa (كوبا)  •  Version: 0.1.0-MVP  •  Market: Algeria (DZ)

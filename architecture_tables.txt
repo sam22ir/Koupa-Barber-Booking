@@ -1,0 +1,132 @@
+
+=== TABLE 1 ===
+Field | Details
+App Name | Koupa  (كوبا)
+Bundle ID | dz.koupa.app
+Platform | Android (Exclusive)
+Distribution | Google Play Store
+Target Market | Algeria (DZ) — MVP, scaling nationally
+App Type | Dual-Role: Customer + Barber
+Payment Model | Cash on Arrival (MVP — no online payment)
+Languages | Arabic (primary, RTL, default) + English
+Currency | Algerian Dinar (DZD)
+IDE | Google Antigravity (Agent-First, Gemini 3 Pro)
+Version | 0.1.0-mvp
+
+=== TABLE 2 ===
+MCP Server | Role | Scope
+google-stitch-mcp | UI & Design | All screens, layouts, design tokens, color system, typography
+supabase-mcp | Database & Backend | PostgreSQL schema, RLS policies, Edge Functions, Storage
+firebase-mcp | Auth & Notifications | Phone OTP Authentication, FCM Push Notifications
+
+=== TABLE 3 ===
+Token | Hex Value | Category | Usage
+primary.teal | #1A7A78 | Primary | CTAs, active states, headers
+primary.gold | #E1A553 | Primary | Book buttons, highlights
+secondary.darkSlate | #323E4B | Secondary | Text, nav bar
+background | #F3F5F7 | Secondary | App background
+semantic.success | #2E7D32 | Semantic | Confirmed status
+semantic.error | #C62828 | Semantic | Cancelled, errors
+
+=== TABLE 4 ===
+Font | Script | Weights | Usage
+Montserrat | Latin / English | 400, 600, 700 | All Latin & English UI text
+Cairo | Arabic (primary) | 400, 600, 700 | Primary Arabic UI font — RTL default
+Tajawal | Arabic (fallback) | 400, 700 | Fallback Arabic font
+
+=== TABLE 5 ===
+Screen ID | Description
+splash_screen | App launch — Koupa logo centered on #F3F5F7 background, animated reveal
+onboarding_language | Language choice: Arabic (default) / English. Two full-height cards (Gold & Teal). Arabic pre-selected.
+auth_phone_entry | Accepts 0XXXXXXXXX (local) or +213XXXXXXXXX (intl). App normalises to E.164 before Firebase call. Arabic/English labels.
+auth_otp_verification | 6-digit OTP input with countdown timer, resend link, error states
+role_selection | Post-auth: 'أنا زبون' (Customer) vs 'أنا حلاق' (Barber) role picker
+
+=== TABLE 6 ===
+Screen ID | Description
+customer_home | Search bar + location chip (wilaya). Featured & nearby barbershop cards
+customer_barber_profile | Shop hero image, services & prices, rating, available slots grid
+customer_booking_flow | Step 1: Date picker → Step 2: Time slot → Step 3: Confirm (cash-on-arrival)
+customer_appointments | Tabs: Upcoming / Past. Status badges: pending (gold), confirmed (teal), cancelled (red)
+customer_profile | Name, phone, avatar. Language toggle: Arabic / English. Logout.
+
+=== TABLE 7 ===
+Screen ID | Description
+barber_dashboard | Today's date, summary cards (total & pending), chronological appointment list
+barber_slot_management | Weekly calendar + hourly grid. Toggle slots open/closed. Bulk actions
+barber_notifications | FCM notification list — new bookings, cancellations, with Gold unread border
+barber_shop_profile_edit | Shop name (AR+FR), wilaya dropdown (58 wilayas), address, photo, services editor
+
+=== TABLE 8 ===
+Column | Type | Constraints | Notes
+id | uuid | PK, DEFAULT gen_random_uuid() | Primary key
+phone_number | text | UNIQUE, NOT NULL | Stored as E.164 (+213XXXXXXXXX). Input: 0XXX or +213XXX both accepted
+full_name | text | NULLABLE | Set after role selection
+role | text | NOT NULL, CHECK | 'customer' | 'barber'
+fcm_token | text | NULLABLE | Updated on every app launch
+language | text | DEFAULT 'ar' | 'ar' (primary) | 'en' (secondary)
+created_at | timestamptz | DEFAULT now() | Auto-set on insert
+
+=== TABLE 9 ===
+Column | Type | Constraints | Notes
+id | uuid | PK | Primary key
+owner_id | uuid | FK → users.id, UNIQUE | One shop per barber
+shop_name | text | NOT NULL | Display name
+city | text | NOT NULL | Algerian wilaya name
+wilaya_code | smallint | CHECK 1–58 | Official DZ wilaya code
+latitude / longitude | float8 | NULLABLE | GIST index for nearby search
+is_active | boolean | DEFAULT true | Soft-delete pattern
+
+=== TABLE 10 ===
+Column | Type | Constraints | Notes
+id | uuid | PK | Primary key
+customer_id | uuid | FK → users.id | Booking customer
+shop_id | uuid | FK → barbershops.id | Target barbershop
+slot_id | uuid | FK → availability_slots, UNIQUE | One booking per slot
+appointment_date | date | NOT NULL | Redundant with slot for queries
+time_slot | time | NOT NULL | Redundant with slot for queries
+status | text | CHECK, DEFAULT 'pending' | pending | confirmed | cancelled | completed
+payment_method | text | DEFAULT 'cash_on_arrival' | MVP: cash only
+
+=== TABLE 11 ===
+Column | Type | Constraints | Notes
+id | uuid | PK | Primary key
+shop_id | uuid | FK → barbershops.id | Owner shop
+slot_date | date | NOT NULL | Date of availability
+slot_time | time | NOT NULL | Hour of availability
+is_open | boolean | DEFAULT true | Barber can close slots
+is_booked | boolean | DEFAULT false | Set by trigger on appointment
+
+=== TABLE 12 ===
+Function | Responsibility
+get-nearby-shops | Returns barbershops sorted by GPS distance from customer. Accepts: lat, lon, radius_km, wilaya
+create-appointment | Atomic transaction: verify slot → insert appointment → mark slot booked → trigger FCM to barber
+cancel-appointment | Sets status = cancelled, releases slot, sends FCM cancellation push to barber
+
+=== TABLE 13 ===
+Step | Actor | Action
+1 | User | Enters +213 phone number on auth_phone_entry screen
+2 | Firebase Auth | Sends 6-digit OTP via SMS to Algerian number
+3 | User | Enters OTP on auth_otp_verification screen
+4 | Firebase Auth | Issues Firebase ID token on success
+5 | App → Supabase | ID token sent to Edge Function → create/login user in Supabase
+6 | App | Supabase session established → navigate to role_selection or home
+
+=== TABLE 14 ===
+Type | Recipient | Trigger | Arabic Title
+new_booking | Barber | Customer confirms booking | حجز جديد! 🎉
+cancellation | Barber | Customer cancels appointment | إلغاء موعد
+reminder | Customer | 1 hour before appointment (Cloud Function) | تذكير بموعدك ✂️
+
+=== TABLE 15 ===
+Property | Value
+minSdkVersion | 26 (Android 8.0 Oreo)
+targetSdkVersion | 34 (Android 14)
+Kotlin Version | 1.9.23
+Jetpack Compose | Enabled — Kotlin Compiler Extension 1.5.11
+Architecture | MVVM + Clean Architecture (presentation / domain / data)
+DI Framework | Hilt (Dagger)
+Navigation | Jetpack Navigation Compose
+Async | Kotlin Coroutines + StateFlow
+Google Play Category | LIFESTYLE
+In-App Purchases | None (MVP)
