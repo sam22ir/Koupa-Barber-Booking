@@ -11,10 +11,12 @@ import com.koupa.barberbooking.presentation.auth.CreateShopStep2Screen
 import com.koupa.barberbooking.presentation.auth.EditShopScreen
 import com.koupa.barberbooking.domain.model.BarberShop
 import com.koupa.barberbooking.presentation.barber.BarberDashboardScreen
+import com.koupa.barberbooking.presentation.barber.BarberProfileScreen
 import com.koupa.barberbooking.presentation.barber.SlotManagementScreen
 import com.koupa.barberbooking.presentation.booking.BookConfirmationScreen
 import com.koupa.barberbooking.presentation.booking.BookDateScreen
 import com.koupa.barberbooking.presentation.booking.BookTimeScreen
+import com.koupa.barberbooking.presentation.customer.AccountScreen
 import com.koupa.barberbooking.presentation.customer.CustomerAppointmentsScreen
 import com.koupa.barberbooking.presentation.customer.CustomerHomeScreen
 import com.koupa.barberbooking.presentation.notifications.NotificationsScreen
@@ -33,8 +35,10 @@ object KoupaDestinations {
     const val SPLASH                  = "splash"
     const val CUSTOMER_HOME           = "customer_home"
     const val CUSTOMER_APPOINTMENTS   = "customer_appointments"
+    const val CUSTOMER_ACCOUNT        = "customer_account"
     const val BARBER_DASHBOARD        = "barber_dashboard"
     const val BARBER_SLOT_MANAGEMENT  = "slot_management"
+    const val BARBER_PROFILE          = "barber_profile"
     const val NOTIFICATIONS           = "notifications"
 
     // Barber onboarding
@@ -74,7 +78,7 @@ fun KoupaNavigation(
         popExitTransition   = { screenPopExit }
     ) {
 
-        // ─── Splash ──────────────────────────────────────────────────────────
+        // ─── Splash ───────────────────────────────────────────────────────
         composable(
             route = KoupaDestinations.SPLASH,
             enterTransition = { fadeIn(tween(500)) },
@@ -89,14 +93,14 @@ fun KoupaNavigation(
             )
         }
 
-        // ─── Customer Home ────────────────────────────────────────────────────
+        // ─── Customer Home ─────────────────────────────────────────────────
         composable(KoupaDestinations.CUSTOMER_HOME) {
             CustomerHomeScreen(
                 onNavigateToAppointments = {
                     navController.navigate(KoupaDestinations.CUSTOMER_APPOINTMENTS)
                 },
                 onNavigateToAccount = {
-                    // TODO: Account screen
+                    navController.navigate(KoupaDestinations.CUSTOMER_ACCOUNT)
                 },
                 onBookAppointment = { shopId ->
                     navController.navigate(KoupaDestinations.bookDate(shopId))
@@ -104,7 +108,7 @@ fun KoupaNavigation(
             )
         }
 
-        // ─── Customer Appointments ────────────────────────────────────────────
+        // ─── Customer Appointments ──────────────────────────────────────────────
         composable(KoupaDestinations.CUSTOMER_APPOINTMENTS) {
             CustomerAppointmentsScreen(
                 onNavigateToHome = {
@@ -112,11 +116,27 @@ fun KoupaNavigation(
                         popUpTo(KoupaDestinations.CUSTOMER_HOME) { inclusive = false }
                     }
                 },
-                onNavigateToAccount = {}
+                onNavigateToAccount = {
+                    navController.navigate(KoupaDestinations.CUSTOMER_ACCOUNT)
+                }
             )
         }
 
-        // ─── Booking: Step 1 — Date ───────────────────────────────────────────
+        // ─── Customer Account ─────────────────────────────────────────────────
+        composable(KoupaDestinations.CUSTOMER_ACCOUNT) {
+            AccountScreen(
+                onNavigateToHome = {
+                    navController.navigate(KoupaDestinations.CUSTOMER_HOME) {
+                        popUpTo(KoupaDestinations.CUSTOMER_HOME) { inclusive = false }
+                    }
+                },
+                onNavigateToAppointments = {
+                    navController.navigate(KoupaDestinations.CUSTOMER_APPOINTMENTS)
+                }
+            )
+        }
+
+        // ─── Booking: Step 1 — Date ─────────────────────────────────────────
         composable(
             route = KoupaDestinations.BOOK_DATE,
             arguments = listOf(navArgument("shopId") { type = NavType.StringType })
@@ -131,7 +151,7 @@ fun KoupaNavigation(
             )
         }
 
-        // ─── Booking: Step 2 — Time ───────────────────────────────────────────
+        // ─── Booking: Step 2 — Time ─────────────────────────────────────────
         composable(
             route = KoupaDestinations.BOOK_TIME,
             arguments = listOf(
@@ -185,14 +205,16 @@ fun KoupaNavigation(
                 onNavigateToNotifications  = {
                     navController.navigate(KoupaDestinations.NOTIFICATIONS)
                 },
-                onNavigateToProfile        = {}, // Future: profile screen
+                onNavigateToProfile        = {
+                    navController.navigate(KoupaDestinations.BARBER_PROFILE)
+                },
                 onNavigateToSlotManagement = {
                     navController.navigate(KoupaDestinations.BARBER_SLOT_MANAGEMENT)
                 }
             )
         }
 
-        // ─── Barber Slot Management ───────────────────────────────────────────
+        // ─── Barber Slot Management ─────────────────────────────────────────────
         composable(KoupaDestinations.BARBER_SLOT_MANAGEMENT) {
             SlotManagementScreen(
                 onBack = { navController.popBackStack() },
@@ -204,11 +226,30 @@ fun KoupaNavigation(
                 onNavigateToNotifications = {
                     navController.navigate(KoupaDestinations.NOTIFICATIONS)
                 },
-                onNavigateToProfile = {}
+                onNavigateToProfile = {
+                    navController.navigate(KoupaDestinations.BARBER_PROFILE)
+                }
             )
         }
 
-        // ─── Notifications ────────────────────────────────────────────────────
+        // ─── Barber Profile ─────────────────────────────────────────────────
+        composable(KoupaDestinations.BARBER_PROFILE) {
+            BarberProfileScreen(
+                onNavigateToHome = {
+                    navController.navigate(KoupaDestinations.BARBER_DASHBOARD) {
+                        popUpTo(KoupaDestinations.BARBER_DASHBOARD) { inclusive = false }
+                    }
+                },
+                onNavigateToAppointments = {
+                    navController.navigate(KoupaDestinations.CUSTOMER_APPOINTMENTS)
+                },
+                onNavigateToNotifications = {
+                    navController.navigate(KoupaDestinations.NOTIFICATIONS)
+                }
+            )
+        }
+
+        // ─── Notifications ──────────────────────────────────────────────────
         composable(KoupaDestinations.NOTIFICATIONS) {
             NotificationsScreen(
                 onNavigateToHome = {
@@ -229,7 +270,6 @@ fun KoupaNavigation(
             BarberGoogleSignInScreen(
                 phoneNumber    = phone,
                 onSignInSuccess = { googleUid, _ ->
-                    // ownerId placeholder — resolved after phone auth saved userId
                     navController.navigate(KoupaDestinations.createShopStep1("pending", googleUid, phone))
                 },
                 onBack = { navController.popBackStack() }
@@ -278,7 +318,7 @@ fun KoupaNavigation(
             )
         }
 
-        // ─── Edit Shop ────────────────────────────────────────────────────────
+        // ─── Edit Shop ─────────────────────────────────────────────────────────
         composable(
             route = KoupaDestinations.EDIT_SHOP,
             arguments = listOf(
@@ -288,7 +328,6 @@ fun KoupaNavigation(
         ) { back ->
             val shopId  = back.arguments?.getString("shopId")  ?: ""
             val ownerId = back.arguments?.getString("ownerId") ?: ""
-            // Minimal BarberShop stub — viewModel.loadShopForEdit() populates all fields
             val shopStub = BarberShop(id = shopId, ownerId = ownerId, shopName = "", city = "", wilayaCode = null)
             EditShopScreen(
                 shop    = shopStub,
