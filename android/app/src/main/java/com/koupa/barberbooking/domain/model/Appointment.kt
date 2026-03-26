@@ -15,7 +15,9 @@ data class Appointment(
     val appointmentDate: LocalDate,
     val timeSlot: LocalTime,
     val status: AppointmentStatus,
-    val paymentMethod: String = "cash_on_arrival"
+    val paymentMethod: String = "cash_on_arrival",
+    val customerName: String? = null,
+    val serviceName: String? = null
 )
 
 enum class AppointmentStatus {
@@ -27,7 +29,7 @@ enum class AppointmentStatus {
             "confirmed" -> CONFIRMED
             "cancelled" -> CANCELLED
             "completed" -> COMPLETED
-            else -> throw IllegalArgumentException("Invalid status: $value")
+            else -> PENDING // Default to PENDING for unknown statuses
         }
     }
 
