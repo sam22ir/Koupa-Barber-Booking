@@ -25,18 +25,7 @@ import com.koupa.barberbooking.ui.theme.KoupaBackground
 import com.koupa.barberbooking.ui.theme.KoupaGold
 import com.koupa.barberbooking.ui.theme.KoupaTeal
 
-data class TodayAppointment(
-    val clientName: String,
-    val service: String,
-    val time: String,
-    val status: String = "قادم"
-)
-
-private val todayAppointments = listOf(
-    TodayAppointment("أحمد علي", "قص شعر ولحية", "10:30 ص"),
-    TodayAppointment("محمد رضا", "تنظيف بشرة", "11:45 ص"),
-    TodayAppointment("ياسين سامي", "قص شعر أطفال", "01:15 م"),
-)
+// TodayAppointment is defined in BarberDashboardViewModel.kt
 
 /**
  * Barber Dashboard matching Stitch "Barber Dashboard" design.
@@ -194,10 +183,16 @@ fun BarberDashboardScreen(
                 }
             }
 
-            // Appointment rows
-            items(todayAppointments) { appt ->
-                AppointmentRow(appt)
-            }
+// Appointment rows
+        items(
+            listOf(
+                TodayAppointment("1", "أحمد محمد", "قص شعر", "09:00", "مؤكد"),
+                TodayAppointment("2", "كريم علي", "حلاقة لحية", "10:30", "قيد الانتظار"),
+                TodayAppointment("3", "يوسف بوزيد", "قص + غسيل", "14:00", "مؤكد")
+            )
+        ) { appt ->
+            AppointmentRow(appt)
+        }
 
             // Tip card
             item {

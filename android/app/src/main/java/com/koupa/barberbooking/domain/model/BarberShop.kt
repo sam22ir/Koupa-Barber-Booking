@@ -16,15 +16,17 @@ data class BarberShop(
     val isActive: Boolean = true,
     val bio: String? = null,
     val services: List<String> = emptyList(),
-    val openingFrom: String = "09:00",           // "HH:mm"
-    val openingTo: String = "20:00",             // "HH:mm"
+    val openingFrom: String = "09:00", // "HH:mm"
+    val openingTo: String = "20:00", // "HH:mm"
     val workingDays: List<String> = emptyList(), // ["sun","mon",…]
     val priceMin: Int = 0,
     val priceMax: Int = 5000,
     val whatsappNumber: String? = null,
     val googleUid: String? = null,
     val profilePhotoUrl: String? = null,
-    val distanceKm: Double? = null               // Only for nearby search
+    val distanceKm: Double? = null, // Only for nearby search
+    val averageRating: Double? = null, // Average rating from reviews
+    val reviewCount: Int = 0 // Number of reviews
 )
 
 /**

@@ -46,7 +46,7 @@ class KoupaFirebaseMessagingService : FirebaseMessagingService() {
      */
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        Log.d(TAG, "FCM token refreshed: $token")
+        Log.i(TAG, "FCM token refreshed — updating Supabase")
 
         serviceScope.launch {
             try {
@@ -60,7 +60,7 @@ class KoupaFirebaseMessagingService : FirebaseMessagingService() {
                     .update(buildJsonObject { put("fcm_token", token) }) {
                         filter { eq("phone_number", phoneNumber) }
                     }
-                Log.d(TAG, "FCM token updated in Supabase")
+                Log.i(TAG, "FCM token updated in Supabase")
             } catch (e: Exception) {
                 Log.e(TAG, "Failed to update FCM token", e)
             }
@@ -73,7 +73,7 @@ class KoupaFirebaseMessagingService : FirebaseMessagingService() {
      */
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-        Log.d(TAG, "Message received from: ${remoteMessage.from}")
+        Log.i(TAG, "Message received — type: ${remoteMessage.data["type"]}")
 
         // Handle notification payload
         remoteMessage.notification?.let { notification ->

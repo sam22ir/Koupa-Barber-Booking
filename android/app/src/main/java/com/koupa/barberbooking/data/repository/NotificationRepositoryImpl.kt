@@ -2,6 +2,7 @@ package com.koupa.barberbooking.data.repository
 
 import com.koupa.barberbooking.data.datasource.remote.FirebaseMessagingDataSource
 import com.koupa.barberbooking.data.datasource.remote.SupabaseClientFactory
+import com.koupa.barberbooking.domain.model.Notification
 import com.koupa.barberbooking.domain.repository.NotificationRepository
 import io.github.jan.supabase.postgrest.from
 import kotlinx.serialization.json.buildJsonObject
@@ -37,4 +38,31 @@ class NotificationRepositoryImpl @Inject constructor(
 
     override suspend fun unsubscribeFromTopic(topic: String): Result<Unit> =
         fcmDataSource.unsubscribeFromTopic(topic)
+
+    override suspend fun getNotifications(userId: String): Result<List<Notification>> {
+        return try {
+            // TODO: Implement actual Supabase query for notifications
+            Result.success(emptyList())
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun markAllAsRead(userId: String): Result<Unit> {
+        return try {
+            // TODO: Implement actual Supabase update
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun markAsRead(notificationId: String): Result<Unit> {
+        return try {
+            // TODO: Implement actual Supabase update
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 }

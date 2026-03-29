@@ -2,10 +2,7 @@ package com.koupa.barberbooking.data.mapper
 
 import com.koupa.barberbooking.domain.model.Appointment
 import com.koupa.barberbooking.domain.model.AppointmentStatus
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.put
-import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.*
 import java.time.LocalDate
 import java.time.LocalTime
 
@@ -17,10 +14,22 @@ object AppointmentMapper {
 
     fun fromJson(json: JsonObject): Appointment {
         // Extract service name from barbershops.services array (first service or joined)
-        val serviceName = json["barbershops"]?.jsonObject?.get("services")?.jsonArray
-            ?.map { it.jsonPrimitive?.content ?: "" }
-            ?.filter { it.isNotBlank() }
-            ?.firstOrNull() ?: json["service_name"]?.jsonPrimitive?.content
+        val serviceName = json["service_name"]?.jsonPrimitive?.content?.takeIf { it.isNotBlank() }
+            ?: run {
+                val barbershop = json["barbershops"]
+                if (barbershop is JsonObject) {
+                    val services = barbershop["services"]
+                    if (services is JsonArray) {
+                        services.map { it.jsonPrimitive?.content?.trim() ?: "" }
+                            .firstOrNull { it.isNotBlank() }
+                    } else {
+                        null
+                    }
+                } else {
+                    null
+                }
+            }
+            ?: ""
 
         return Appointment(
             id = json["id"]?.jsonPrimitive?.content ?: "",
@@ -31,7 +40,7 @@ object AppointmentMapper {
             timeSlot = LocalTime.parse(json["time_slot"]?.jsonPrimitive?.content ?: ""),
             status = AppointmentStatus.fromString(json["status"]?.jsonPrimitive?.content ?: "pending"),
             paymentMethod = json["payment_method"]?.jsonPrimitive?.content ?: "cash_on_arrival",
-            customerName = json["customer_name"]?.jsonPrimitive?.content,
+            customerName = json["customer_name"]?.jsonPrimitive?.content ?: "",
             serviceName = serviceName
         )
     }

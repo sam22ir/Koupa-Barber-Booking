@@ -41,4 +41,68 @@
     <string name="retry">إعادة المحاولة</string>
     <string name="cancel">إلغاء</string>
     <string name="confirm">تأكيد</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_map">الخريطة</string>
+    <string name="nav_bookings">الحجوزات</string>
+    <string name="nav_profile">الملف الشخصي</string>
+
+    <!-- Map Features -->
+    <string name="nearby_barbers">حلاقون قريبون</string>
+    <string name="distance_km">على بعد %.1f كم</string>
+    <string name="directions">الاتجاهات</string>
+    <string name="book_now">احجز الآن</string>
+    <string name="open_now">مفتوح الآن</string>
+    <string name="closed">مغلق</string>
+
+    <!-- Booking Flow -->
+    <string name="select_service">اختر الخدمة</string>
+    <string name="choose_time">اختر الوقت</string>
+    <string name="choose_date">اختر التاريخ</string>
+    <string name="confirm_booking">تأكيد الحجز</string>
+    <string name="booking_confirmed">تم تأكيد الحجز</string>
+    <string name="booking_cancelled">تم إلغاء الحجز</string>
+
+    <!-- Payment -->
+    <string name="payment_method">طريقة الدفع</string>
+    <string name="cash_payment">الدفع نقداً</string>
+    <string name="cash_only">نقداً فقط</string>
+    <string name="total_amount">المبلغ الإجمالي</string>
+
+    <!-- Reviews -->
+    <string name="reviews">التقييمات</string>
+    <string name="write_review">اكتب تقييماً</string>
+    <string name="rating">التقييم</string>
+    <string name="no_reviews_yet">لا توجد تقييمات بعد</string>
+
+    <!-- Profile -->
+    <string name="edit_profile">تعديل الملف الشخصي</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="settings">الإعدادات</string>
+    <string name="language">اللغة</string>
+
+    <!-- Errors -->
+    <string name="network_error">خطأ في الاتصال. تحقق من اتصالك بالإنترنت.</string>
+    <string name="invalid_phone">رقم هاتف غير صالح</string>
+    <string name="otp_sent">تم إرسال رمز التحقق</string>
+    <string name="invalid_otp">رمز تحقق غير صالح</string>
+    <string name="booking_failed">فشل الحجز. يرجى المحاولة مرة أخرى.</string>
+
+    <!-- Success Messages -->
+    <string name="booking_success">تم الحجز بنجاح!</string>
+    <string name="profile_updated">تم تحديث الملف الشخصي</string>
+    <string name="review_submitted">تم إرسال التقييم</string>
+
+    <!-- Time -->
+    <string name="today">اليوم</string>
+    <string name="tomorrow">غداً</string>
+    <string name="this_week">هذا الأسبوع</string>
+
+    <!-- Actions -->
+    <string name="save">حفظ</string>
+    <string name="back">رجوع</string>
+    <string name="next">التالي</string>
+    <string name="done">تم</string>
+    <string name="skip">تخطي</string>
 </resources>

@@ -1,7 +1,9 @@
 package com.koupa.barberbooking.domain.repository
 
+import com.koupa.barberbooking.domain.model.Notification
+
 /**
- * Repository interface for FCM notification operations.
+ * Repository interface for notification operations.
  */
 interface NotificationRepository {
     /**
@@ -19,4 +21,19 @@ interface NotificationRepository {
      * Unsubscribe from a notification topic.
      */
     suspend fun unsubscribeFromTopic(topic: String): Result<Unit>
+
+    /**
+     * Get all notifications for a user.
+     */
+    suspend fun getNotifications(userId: String): Result<List<Notification>>
+
+    /**
+     * Mark all notifications as read for a user.
+     */
+    suspend fun markAllAsRead(userId: String): Result<Unit>
+
+    /**
+     * Mark a specific notification as read.
+     */
+    suspend fun markAsRead(notificationId: String): Result<Unit>
 }

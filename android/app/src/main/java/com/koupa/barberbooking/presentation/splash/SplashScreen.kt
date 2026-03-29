@@ -25,6 +25,11 @@ import kotlinx.coroutines.delay
 @Composable
 fun SplashScreen(onSplashFinished: () -> Unit) {
 
+    // ── Animation states ──────────────────────────────────────────────────────
+    val logoAlpha  by animateFloatAsState(targetValue = 1f, animationSpec = tween(800, easing = EaseOutCubic), label = "logoAlpha")
+    val logoScale  by animateFloatAsState(targetValue = 1f, animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessLow), label = "logoScale")
+    val subtitleAlpha by animateFloatAsState(targetValue = 1f, animationSpec = tween(700, delayMillis = 400, easing = EaseOutCubic), label = "subtitleAlpha")
+
     var triggerAnim by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
@@ -32,7 +37,6 @@ fun SplashScreen(onSplashFinished: () -> Unit) {
         delay(2400L)
         onSplashFinished()
     }
-
 
     // Animated values driven by triggerAnim state
     val animLogoAlpha by animateFloatAsState(

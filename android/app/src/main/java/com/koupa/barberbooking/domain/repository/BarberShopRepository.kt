@@ -48,4 +48,6 @@ interface BarberShopRepository {
     suspend fun getCustomerAppointments(customerId: String): Result<List<Appointment>>
 
     suspend fun getShopAppointments(shopId: String, date: LocalDate): Result<List<Appointment>>
+    
+    suspend fun getShopByOwnerId(ownerId: String): Result<BarberShop?>
 }

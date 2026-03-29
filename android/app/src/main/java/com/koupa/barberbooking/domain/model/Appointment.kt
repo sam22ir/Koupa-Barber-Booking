@@ -29,7 +29,7 @@ enum class AppointmentStatus {
             "confirmed" -> CONFIRMED
             "cancelled" -> CANCELLED
             "completed" -> COMPLETED
-            else -> PENDING // Default to PENDING for unknown statuses
+            else -> throw IllegalArgumentException("Invalid status: $value")
         }
     }
 

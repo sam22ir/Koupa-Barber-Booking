@@ -5,6 +5,8 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
     id("com.google.devtools.ksp")
+    id("com.google.firebase.crashlytics")
+    id("org.jetbrains.kotlinx.kover") version "0.9.0"
 }
 
 android {
@@ -24,24 +26,36 @@ android {
             useSupportLibrary = true
         }
 
-        // Build config
-        buildConfigField("String", "SUPABASE_URL", "\"https://qfnalhdzeqqhymfkgdnd.supabase.co\"")
-        buildConfigField("String", "SUPABASE_ANON_KEY", "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFmbmFsaGR6ZXFxaHltZmtnZG5kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwNDQ3OTcsImV4cCI6MjA4OTYyMDc5N30.8RQMdf5G4gV0ZM0SlquhcDcJjKcDv6AV201XCJiJN8E\"")
+        // Build config - loaded from local.properties or environment
+        val supabaseUrl = project.findProperty("SUPABASE_URL") as? String 
+            ?: System.getenv("SUPABASE_URL") 
+            ?: ""
+        val supabaseAnonKey = project.findProperty("SUPABASE_ANON_KEY") as? String 
+            ?: System.getenv("SUPABASE_ANON_KEY") 
+            ?: ""
+        
+        buildConfigField("String", "SUPABASE_URL", "\"$supabaseUrl\"")
+        buildConfigField("String", "SUPABASE_ANON_KEY", "\"$supabaseAnonKey\"")
     }
 
     signingConfigs {
         create("release") {
-            storeFile = file("koupa-release.jks")
-            storePassword = "koupa@2025"
-            keyAlias = "koupa"
-            keyPassword = "koupa@2025"
+            // Signing config loaded from local.properties or environment
+            storeFile = file(project.findProperty("KEYSTORE_FILE") as? String ?: "koupa-release.jks")
+            storePassword = project.findProperty("KEYSTORE_PASSWORD") as? String 
+                ?: System.getenv("KEYSTORE_PASSWORD") 
+                ?: ""
+            keyAlias = project.findProperty("KEY_ALIAS") as? String ?: "koupa"
+            keyPassword = project.findProperty("KEY_PASSWORD") as? String 
+                ?: System.getenv("KEY_PASSWORD") 
+                ?: ""
         }
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
-            isShrinkResources = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -111,8 +125,12 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-messaging-ktx")
+    implementation("com.google.firebase:firebase-crashlytics-ktx")
+    implementation("com.google.firebase:firebase-analytics-ktx")
     // Google Sign-In
     implementation("com.google.android.gms:play-services-auth:21.0.0")
+    // Google Location Services (for GPS tracking)
+    implementation("com.google.android.gms:play-services-location:21.1.0")
     // OSMDroid — free OpenStreetMap SDK (replaces Google Maps)
     implementation("org.osmdroid:osmdroid-android:6.1.18")
     // Accompanist Permissions (location)
@@ -130,6 +148,11 @@ dependencies {
     // DataStore for preferences
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
+    // Room Database for offline-first
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+
     // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -138,4 +161,19 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // Kotest
+    testImplementation("io.kotest:kotest-runner-junit5:5.9.3")
+    testImplementation("io.kotest:kotest-assertions:5.9.3")
+    testImplementation("io.kotest:kotest-property:5.9.3")
+
+    // MockK
+    testImplementation("io.mockk:mockk:1.13.9")
+    testImplementation("io.mockk:mockk-agent-jvm:1.13.9")
+
+    // Coroutine testing
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+
+    // Kover coverage
+    testImplementation("org.jetbrains.kotlinx:kover:0.9.7")
 }

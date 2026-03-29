@@ -11,14 +11,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-// ── Koupa Brand Tokens (constant across themes) ──────────────────────────────
-val KoupaTeal       = Color(0xFF1A7A78)
-val KoupaTealLight  = Color(0xFF2B9F9C)
-val KoupaGold       = Color(0xFFE1A553)
-val KoupaDarkSlate  = Color(0xFF323E4B)
-val KoupaBackground = Color(0xFFF3F5F7)       // light-mode bg
-val KoupaSuccess    = Color(0xFF2E7D32)
-val KoupaError      = Color(0xFFC62828)
+// Color tokens are defined in Color.kt - use KoupaColors or the aliases there
 
 // ── Light Color Scheme ────────────────────────────────────────────────────────
 private val LightColorScheme = lightColorScheme(

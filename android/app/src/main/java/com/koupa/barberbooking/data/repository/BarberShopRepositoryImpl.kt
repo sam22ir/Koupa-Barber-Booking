@@ -1,7 +1,6 @@
 package com.koupa.barberbooking.data.repository
 
 import com.koupa.barberbooking.data.datasource.remote.SupabaseClientFactory
-import com.koupa.barberbooking.data.mapper.AppointmentMapper
 import com.koupa.barberbooking.data.mapper.BarberShopMapper
 import com.koupa.barberbooking.domain.model.Appointment
 import com.koupa.barberbooking.domain.model.AppointmentStatus
@@ -103,12 +102,12 @@ class BarberShopRepositoryImpl @Inject constructor() : BarberShopRepository {
         }
     }
 
-    override suspend fun getShopByOwnerId(ownerId: String): Result<BarberShop?> {
+override suspend fun getShopByOwnerId(ownerId: String): Result<BarberShop?> {
         return try {
             val result = supabase.from("barbershops")
                 .select { filter { eq("owner_id", ownerId) } }
                 .decodeList<JsonObject>()
-                .firstOrNull()
+.firstOrNull()
             Result.success(result?.let { BarberShopMapper.fromJson(it) })
         } catch (e: Exception) {
             Result.failure(e)
@@ -235,7 +234,16 @@ class BarberShopRepositoryImpl @Inject constructor() : BarberShopRepository {
                 .firstOrNull()
                 ?: return Result.failure(Exception("Failed to fetch created appointment"))
 
-            val appointment = AppointmentMapper.fromJson(result)
+            val appointment = Appointment(
+                id = result["id"]?.jsonPrimitive?.content ?: "",
+                customerId = result["customer_id"]?.jsonPrimitive?.content ?: "",
+                shopId = result["shop_id"]?.jsonPrimitive?.content ?: "",
+                slotId = result["slot_id"]?.jsonPrimitive?.content ?: "",
+                appointmentDate = LocalDate.parse(result["appointment_date"]?.jsonPrimitive?.content ?: ""),
+                timeSlot = LocalTime.parse(result["time_slot"]?.jsonPrimitive?.content ?: ""),
+                status = AppointmentStatus.fromString(result["status"]?.jsonPrimitive?.content ?: "pending"),
+                paymentMethod = result["payment_method"]?.jsonPrimitive?.content ?: "cash_on_arrival"
+            )
 
             Result.success(appointment)
         } catch (e: Exception) {
@@ -278,7 +286,16 @@ class BarberShopRepositoryImpl @Inject constructor() : BarberShopRepository {
                 .firstOrNull()
                 ?: return Result.failure(Exception("Appointment not found"))
 
-            val appointment = AppointmentMapper.fromJson(result)
+            val appointment = Appointment(
+                id = result["id"]?.jsonPrimitive?.content ?: "",
+                customerId = result["customer_id"]?.jsonPrimitive?.content ?: "",
+                shopId = result["shop_id"]?.jsonPrimitive?.content ?: "",
+                slotId = result["slot_id"]?.jsonPrimitive?.content ?: "",
+                appointmentDate = LocalDate.parse(result["appointment_date"]?.jsonPrimitive?.content ?: ""),
+                timeSlot = LocalTime.parse(result["time_slot"]?.jsonPrimitive?.content ?: ""),
+                status = AppointmentStatus.fromString(result["status"]?.jsonPrimitive?.content ?: "pending"),
+                paymentMethod = result["payment_method"]?.jsonPrimitive?.content ?: "cash_on_arrival"
+            )
 
             Result.success(appointment)
         } catch (e: Exception) {
@@ -294,7 +311,18 @@ class BarberShopRepositoryImpl @Inject constructor() : BarberShopRepository {
                 }
                 .decodeList<JsonObject>()
 
-            val appointments = result.map { AppointmentMapper.fromJson(it) }
+            val appointments = result.map { json ->
+                Appointment(
+                    id = json["id"]?.jsonPrimitive?.content ?: "",
+                    customerId = json["customer_id"]?.jsonPrimitive?.content ?: "",
+                    shopId = json["shop_id"]?.jsonPrimitive?.content ?: "",
+                    slotId = json["slot_id"]?.jsonPrimitive?.content ?: "",
+                    appointmentDate = LocalDate.parse(json["appointment_date"]?.jsonPrimitive?.content ?: ""),
+                    timeSlot = LocalTime.parse(json["time_slot"]?.jsonPrimitive?.content ?: ""),
+                    status = AppointmentStatus.fromString(json["status"]?.jsonPrimitive?.content ?: "pending"),
+                    paymentMethod = json["payment_method"]?.jsonPrimitive?.content ?: "cash_on_arrival"
+                )
+            }
 
             Result.success(appointments)
         } catch (e: Exception) {
@@ -309,21 +337,6 @@ class BarberShopRepositoryImpl @Inject constructor() : BarberShopRepository {
         return try {
             val result = supabase.from("appointments")
                 .select {
-                    columns {
-                        wildcard()
-                        // Join with users table to get customer name
-                        customer {
-                            full_name as customer_name
-                        }
-                        // Join with slots table to get service_id
-                        slot {
-                            service_id
-                        }
-                        // Join with barbershops table to get services array
-                        barbershops {
-                            services
-                        }
-                    }
                     filter {
                         eq("shop_id", shopId)
                         eq("appointment_date", date.toString())
@@ -331,7 +344,18 @@ class BarberShopRepositoryImpl @Inject constructor() : BarberShopRepository {
                 }
                 .decodeList<JsonObject>()
 
-            val appointments = result.map { AppointmentMapper.fromJson(it) }
+            val appointments = result.map { json ->
+                Appointment(
+                    id = json["id"]?.jsonPrimitive?.content ?: "",
+                    customerId = json["customer_id"]?.jsonPrimitive?.content ?: "",
+                    shopId = json["shop_id"]?.jsonPrimitive?.content ?: "",
+                    slotId = json["slot_id"]?.jsonPrimitive?.content ?: "",
+                    appointmentDate = LocalDate.parse(json["appointment_date"]?.jsonPrimitive?.content ?: ""),
+                    timeSlot = LocalTime.parse(json["time_slot"]?.jsonPrimitive?.content ?: ""),
+                    status = AppointmentStatus.fromString(json["status"]?.jsonPrimitive?.content ?: "pending"),
+                    paymentMethod = json["payment_method"]?.jsonPrimitive?.content ?: "cash_on_arrival"
+                )
+            }
 
             Result.success(appointments)
         } catch (e: Exception) {

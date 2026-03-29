@@ -58,10 +58,10 @@ data class TodayAppointment(
  */
 @HiltViewModel
 class BarberDashboardViewModel @Inject constructor(
-    private val repository: BarberShopRepository,
-    private val authRepository: AuthRepository,
-    private val debtRepository: DebtRepository,
-    private val userPreferences: UserPreferences
+private val repository: BarberShopRepository,
+private val authRepository: AuthRepository,
+private val debtRepository: DebtRepository,
+val userPreferences: UserPreferences
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(BarberDashboardUiState())
